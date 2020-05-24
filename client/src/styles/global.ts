@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
       background: #fff;
       color: #555;
       font-size: var(--text-base-size);
-      font-family: 'Work Sans', sans-serif;
+      font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
       @media (min-width: 480px) {
           padding-bottom: 5rem;

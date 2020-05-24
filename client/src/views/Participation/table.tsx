@@ -1,7 +1,12 @@
 import React from 'react';
 import { StyledTable } from './styles';
+import { Participation } from './index';
 
-const Table = () => {
+interface TableProps {
+  participations: Participation[];
+}
+
+const Table: React.FC<TableProps> = ({ participations }) => {
   return (
     <StyledTable>
       <thead>
@@ -13,36 +18,15 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Carlos</td>
-          <td>Moura</td>
-          <td>5%</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Carlos</td>
-          <td>Moura</td>
-          <td>5%</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Carlos</td>
-          <td>Moura</td>
-          <td>5%</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Carlos</td>
-          <td>Moura</td>
-          <td>5%</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Carlos</td>
-          <td>Moura</td>
-          <td>5%</td>
-        </tr>
+        {participations &&
+          participations.map((participation, index) => (
+            <tr key={index}>
+              <td>{index}</td>
+              <td>{participation.firstName}</td>
+              <td>{participation.lastName}</td>
+              <td>{participation.participation}%</td>
+            </tr>
+          ))}
       </tbody>
     </StyledTable>
   );

@@ -5,6 +5,10 @@ export const StyledContainer = styled(Container)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Title = styled.h1`
@@ -36,8 +40,13 @@ export const StyledTable = styled.table`
     padding: 0.5rem;
     border: 1px solid #555;
 
+    &:first-child,
     &:last-child {
       text-align: center;
     }
   }
+`;
+
+export const ChartWrapper = styled.div`
+  width: 100%;
 `;
