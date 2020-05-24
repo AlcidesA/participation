@@ -17,7 +17,6 @@ const Participation = () => {
 
   useEffect(() => {
     api.get('participation').then((res) => {
-      console.log('res', res);
       if (res.status === 200) setParticipations(res.data);
     });
   }, []);
