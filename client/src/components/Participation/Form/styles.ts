@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { Container } from '../../../styles/container';
 
 export const Wrapper = styled.div`
   background-color: #41b8e3;
   padding: 1rem 0;
 `;
 
-export const StyledContainer = styled(Container)`
+export const StyledForm = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 120px;
-  grid-gap: 1rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
 `;
 
 export const Input = styled.input`
