@@ -50,3 +50,8 @@ export const StyledTable = styled.table`
 export const ChartWrapper = styled.div`
   width: 100%;
 `;
+
+export const Delete = styled.td`
+  cursor: pointer;
+  font-weight: bold;
+`;

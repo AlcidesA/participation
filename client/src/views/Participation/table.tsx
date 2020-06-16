@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyledTable } from './styles';
+import { StyledTable, Delete } from './styles';
 import { Participation } from './index';
 
 interface TableProps {
   participations: Participation[];
+  onDelete: (id: number) => void;
 }
 
-const Table: React.FC<TableProps> = ({ participations }) => {
+const Table: React.FC<TableProps> = ({ participations, onDelete }) => {
+
   return (
     <StyledTable>
       <thead>
@@ -15,6 +17,7 @@ const Table: React.FC<TableProps> = ({ participations }) => {
           <th>First name</th>
           <th>Last name</th>
           <th>Participation</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +28,7 @@ const Table: React.FC<TableProps> = ({ participations }) => {
               <td>{participation.firstName}</td>
               <td>{participation.lastName}</td>
               <td>{participation.participation}%</td>
+              <Delete onClick={() => onDelete(participation.id)}>x</Delete>
             </tr>
           ))}
       </tbody>

@@ -21,6 +21,12 @@ const Participation = () => {
     });
   }, []);
 
+  function onDelete(id: number) {
+    api.delete(`participation/${id}`).then((res) => {
+      setParticipations(participations.filter(participation => participation.id !== id));
+    })
+  }
+
   return (
     <React.Fragment>
       <Form />
@@ -30,7 +36,7 @@ const Participation = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </Subtitle>
 
-        <Table participations={participations} />
+        <Table participations={participations} onDelete={onDelete}/>
 
         <Chart participations={participations} />
       </StyledContainer>
