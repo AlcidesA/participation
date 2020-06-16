@@ -41,7 +41,7 @@ export default {
         }
       });
 
-      response && res.status(410).json('Participação removida com sucesso');
+      response && res.status(200).json('Participação removida com sucesso');
     } catch (error) {
       console.log('err', error);
       return res.status(500).json('Erro ao deletar participação');
