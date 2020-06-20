@@ -20,13 +20,20 @@ export default {
         return res.status(400).json('Erro ao cadastrar participação');
       }
 
-      let response = await Participation.create({
+      let p = await Participation.create({
         firstName,
         lastName,
         participation
       });
 
-      response && res.status(200).json('Participação cadastrada com sucesso!');
+      let response = {
+        id: p.dataValues.id,
+        firstName: p.dataValues.firstName,
+        lastName: p.dataValues.lastName,
+        participation: p.dataValues.participation
+      };
+
+      response && res.status(200).json(response);
     } catch (error) {
       console.log('err', error);
       return res.status(500).json('Erro ao criar participação');
