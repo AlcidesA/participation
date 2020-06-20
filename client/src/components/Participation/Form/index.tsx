@@ -4,17 +4,30 @@ import { useFormik } from 'formik';
 import { Container } from '../../../styles/container';
 import ParticipationSchema from '../../../helpers/validators/participation';
 import InputErrorMessage from '../../InputErrorMessage';
+import { Participation } from '../../../views/Participation';
 
-const Form = () => {
+interface FormProps {
+  addParticipation: (participation: Participation) => void;
+}
+
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  participation: number;
+}
+
+const initialValues: FormValues = {
+  firstName: '',
+  lastName: '',
+  participation: 0
+};
+
+const Form: React.FC<FormProps> = ({ addParticipation }) => {
   const formik = useFormik({
-    initialValues: {
-      firstName: '',
-      lastName: '',
-      participation: ''
-    },
+    initialValues,
     validationSchema: ParticipationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      addParticipation(values);
     }
   });
 
@@ -37,7 +50,7 @@ const Form = () => {
             value={formik.values.lastName}
           />
           <Input
-            type="text"
+            type="number"
             placeholder="Participation"
             name="participation"
             onChange={formik.handleChange}

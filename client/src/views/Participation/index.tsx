@@ -6,7 +6,7 @@ import Chart from './chart';
 import api from '../../services/api';
 
 export interface Participation {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   participation: number;
@@ -23,20 +23,28 @@ const Participation = () => {
 
   function onDelete(id: number) {
     api.delete(`participation/${id}`).then((res) => {
-      setParticipations(participations.filter(participation => participation.id !== id));
-    })
+      setParticipations(
+        participations.filter((participation) => participation.id !== id)
+      );
+    });
+  }
+
+  function addParticipation(participation: Participation) {
+    api.post('/participation', { ...participation }).then((res) => {
+      setParticipations([...participations, participation]);
+    });
   }
 
   return (
     <React.Fragment>
-      <Form />
+      <Form addParticipation={addParticipation} />
       <StyledContainer>
         <Title>Participations</Title>
         <Subtitle>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </Subtitle>
 
-        <Table participations={participations} onDelete={onDelete}/>
+        <Table participations={participations} onDelete={onDelete} />
 
         <Chart participations={participations} />
       </StyledContainer>

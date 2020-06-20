@@ -8,7 +8,6 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ participations, onDelete }) => {
-
   return (
     <StyledTable>
       <thead>
@@ -28,7 +27,13 @@ const Table: React.FC<TableProps> = ({ participations, onDelete }) => {
               <td>{participation.firstName}</td>
               <td>{participation.lastName}</td>
               <td>{participation.participation}%</td>
-              <Delete onClick={() => onDelete(participation.id)}>x</Delete>
+              {participation.id ? (
+                <Delete onClick={() => onDelete(participation.id as number)}>
+                  x
+                </Delete>
+              ) : (
+                <td></td>
+              )}
             </tr>
           ))}
       </tbody>
