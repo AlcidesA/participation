@@ -31,7 +31,10 @@ const Participation = () => {
 
   function addParticipation(participation: Participation) {
     api.post('/participation', { ...participation }).then((res) => {
-      setParticipations([...participations, participation]);
+      setParticipations([
+        ...participations,
+        (res.data as unknown) as Participation
+      ]);
     });
   }
 
